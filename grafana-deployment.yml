@@ -14,7 +14,7 @@ spec:
       labels:
         app: grafana
     spec:
-      containers:
+     containers:
         - name: grafana
           image: grafana/grafana:latest
           ports:
@@ -22,16 +22,3 @@ spec:
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: "grafa1234"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: grafana-service
-spec:
-  selector:
-    app: grafana
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-  type: LoadBalancer # Puedes cambiar esto a NodePort si no estás en un entorno de nube
